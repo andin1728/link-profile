@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Discount% App</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<!-- Lottie animation -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</head>
+<body>
+	
+	
+	<div class="bg-img1 size1 flex-w flex-c-m p-t-55 p-b-55 p-l-15 p-r-15" style="background-image: url('images/waves-bg.svg');">
+		<div class="wsize1 bor1 bg1 p-t-75 p-b-45 p-l-15 p-r-15 respon1">
+			<div class="wrappic1">
+				<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_c8zlc8qn.json" background="transparent" speed="1"
+					style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+			</div>
+
+			<p class="txt-center m1-txt1 p-t-23 p-b-14">
+				Hitung harga setelah diskon
+			</p>
+
+			
+			<form class="flex-w flex-c-m contact100-form validate-form p-t-15">
+				<div class="wrap-input100 validate-input where1">
+					<input class="s1-txt2 placeholder0 input100" type="text" id="harga" name="harga" placeholder="Masukan Harga" oninput="formatHarga()">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input where1">
+					<input class="s1-txt2 placeholder0 input100" type="text" id="diskon" name="diskon" placeholder="Masukan Diskon" value="0">
+					<span class="focus-input100"></span>
+				</div>
+
+				<input class="flex-c-m s1-txt3 size3 how-btn trans-04 where1" type="button" value="Hitung" onclick="hitungDiskon()">
+				
+				<div class="wrap-input100 validate-input where1">
+					<input class="s1-txt2 placeholder0 input100" type="text" id="total" name="total" readonly>
+					<span class="focus-input100"></span>
+				</div>
+			</form>
+
+			<p class="s1-txt4 txt-center p-t-10">
+				I promise to <span class="bor2">never</span> spam
+			</p>
+			
+		</div>
+	</div>
+
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/moment.min.js"></script>
+	<script src="vendor/countdowntime/moment-timezone.min.js"></script>
+	<script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<!-- <script>
+		function hitungDiskon() {
+				var harga = document.getElementById("harga").value;
+				var diskon = document.getElementById("diskon").value;
+				var total = harga - (harga * diskon / 100);
+				document.getElementById("total").value = "Rp. " + total.toLocaleString();
+			}
+	</script> -->
+	<script>
+		function formatHarga() {
+			var harga = document.getElementById("harga").value;
+			harga = harga.replace(/[^\d]/g, ''); // Hapus semua karakter selain angka
+			harga = parseInt(harga, 10); // Ubah menjadi bilangan bulat
+			if (isNaN(harga)) {
+				harga = 0;
+			}
+			document.getElementById("harga").value = harga.toLocaleString('id-ID');
+		}
+
+		function hitungDiskon() {
+			var harga = document.getElementById("harga").value;
+			harga = harga.replace(/[^\d]/g, ''); // Hapus semua karakter selain angka
+			harga = parseInt(harga, 10); // Ubah menjadi bilangan bulat
+			if (isNaN(harga)) {
+				harga = 0;
+			}
+			var diskon = document.getElementById("diskon").value;
+			var total = harga - (harga * diskon / 100);
+			document.getElementById("total").value = "Rp. " + total.toLocaleString('id-ID');
+		}
+	</script>
+
+
+</body>
+</html>
